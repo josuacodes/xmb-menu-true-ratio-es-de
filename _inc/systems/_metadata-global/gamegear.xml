@@ -17,7 +17,7 @@ Though the Game Gear was rushed to market, its unique game library and price poi
         <systemColorPalette3>008200</systemColorPalette3>
         <systemColorPalette4>0000FE</systemColorPalette4>
         <systemCartSize>1-1</systemCartSize>
-        <fanartSlotRatio>10-9</fanartSlotRatio>
+        <systemScreenRatio>10-9</systemScreenRatio>
     </variables>
     <language name="ar_SA">
         <variables>

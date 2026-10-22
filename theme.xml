@@ -301,7 +301,7 @@ https://github.com/anthonycaccese/basic-xmb-es-de
          </carousel>
       </view>
    </variant>
-   <variant name="gamelist-carousel-titlescreen,gamelist-carousel-titlescreen-marquee">
+   <variant name="gamelist-carousel-titlescreen,gamelist-carousel-titlescreen-marquee,gamelist-carousel-titlescreen-xmb,gamelist-carousel-titlescreen-xmb-marquee">
       <view name="gamelist">
          <carousel name="gamelist-carousel">
             <imageType>titlescreen</imageType>
@@ -315,23 +315,6 @@ https://github.com/anthonycaccese/basic-xmb-es-de
          </carousel>
       </view>
    </variant>
-   <variant name="gamelist-carousel-fanart,gamelist-carousel-fanart-marquee,gamelist-carousel-titlescreen-xmb,gamelist-carousel-titlescreen-xmb-marquee">
-      <view name="gamelist">
-         <!-- Game art is the carousel image, so keep the XMB background behind it -->
-         <image name="background-game-art">
-            <visible>false</visible>
-         </image>
-         <carousel name="gamelist-carousel">
-            <!-- Crop the image to fill the slot instead of letterboxing it -->
-            <imageFit>cover</imageFit>
-            <!-- Games without fanart: faint glass box, no name (it is shown next to the slot) -->
-            <textColor>00000000</textColor>
-            <textSelectedColor>00000000</textSelectedColor>
-            <textBackgroundColor>FFFFFF22</textBackgroundColor>
-            <textSelectedBackgroundColor>FFFFFF22</textSelectedBackgroundColor>
-         </carousel>
-      </view>
-   </variant>
    <variant name="gamelist-carousel-fanart,gamelist-carousel-fanart-marquee">
       <view name="gamelist">
          <carousel name="gamelist-carousel">
@@ -339,10 +322,27 @@ https://github.com/anthonycaccese/basic-xmb-es-de
          </carousel>
       </view>
    </variant>
-   <variant name="gamelist-carousel-titlescreen-xmb,gamelist-carousel-titlescreen-xmb-marquee">
+   <!-- True ratio: slot in the console's screen shape (size set in the aspect-ratio files) -->
+   <variant name="gamelist-carousel-titlescreen,gamelist-carousel-titlescreen-marquee,gamelist-carousel-titlescreen-xmb,gamelist-carousel-titlescreen-xmb-marquee,gamelist-carousel-fanart,gamelist-carousel-fanart-marquee">
       <view name="gamelist">
          <carousel name="gamelist-carousel">
-            <imageType>titlescreen</imageType>
+            <!-- Crop the image to fill the slot instead of letterboxing it -->
+            <imageFit>cover</imageFit>
+         </carousel>
+      </view>
+   </variant>
+   <!-- XMB background: game art only in the carousel, not behind it -->
+   <variant name="gamelist-carousel-fanart,gamelist-carousel-fanart-marquee,gamelist-carousel-titlescreen-xmb,gamelist-carousel-titlescreen-xmb-marquee">
+      <view name="gamelist">
+         <image name="background-game-art">
+            <visible>false</visible>
+         </image>
+         <carousel name="gamelist-carousel">
+            <!-- Games without the image: faint glass box, no name (it is shown next to the slot) -->
+            <textColor>00000000</textColor>
+            <textSelectedColor>00000000</textSelectedColor>
+            <textBackgroundColor>FFFFFF22</textBackgroundColor>
+            <textSelectedBackgroundColor>FFFFFF22</textSelectedBackgroundColor>
          </carousel>
       </view>
    </variant>

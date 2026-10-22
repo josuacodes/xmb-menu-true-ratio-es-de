@@ -10,7 +10,7 @@
         <systemCoverSize>1-1</systemCoverSize>
         <systemCoverSizeType>square</systemCoverSizeType>
         <systemCartSize>1-1</systemCartSize>
-        <fanartSlotRatio>screen</fanartSlotRatio>
+        <systemScreenRatio>screen</systemScreenRatio>
     </variables>
     <language name="ar_SA">
         <variables>

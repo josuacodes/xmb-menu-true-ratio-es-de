@@ -4,6 +4,14 @@ based on 1080x1080
 -->
 <theme>
 
+   <!-- Original sizes, used if the console's size file is missing -->
+   <variables>
+      <screenRatioItemSize>0.140 0.170</screenRatioItemSize>
+      <screenRatioVideoSize>0.28 0.33</screenRatioVideoSize>
+   </variables>
+   <!-- Console screen sizes, see systemScreenRatio in _inc/systems/_metadata-global -->
+   <include>./_inc/screen-ratio/1-1/${systemScreenRatio}.xml</include>
+
    <!--
    ///
    All Views
@@ -126,7 +134,7 @@ based on 1080x1080
       </image>
       <video name="game-video">
          <pos>0.25 0.5</pos>
-         <cropSize>0.28 0.33</cropSize> 
+         <cropSize>${screenRatioVideoSize}</cropSize> 
       </video>
       <text name="system-name">
          <pos>0.42 0.4</pos>
@@ -182,9 +190,12 @@ based on 1080x1080
       </view>
    </variant>
 
-   <variant name="gamelist-carousel-fanart,gamelist-carousel-fanart-marquee,gamelist-carousel-titlescreen-xmb,gamelist-carousel-titlescreen-xmb-marquee">
-      <!-- Slot and video size per console: fanartSlotRatio in _inc/systems/_metadata-global -->
-      <include>./_inc/fanart-slots/1-1/${fanartSlotRatio}.xml</include>
+   <variant name="gamelist-carousel-titlescreen,gamelist-carousel-titlescreen-marquee,gamelist-carousel-titlescreen-xmb,gamelist-carousel-titlescreen-xmb-marquee,gamelist-carousel-fanart,gamelist-carousel-fanart-marquee">
+      <view name="gamelist">
+         <carousel name="gamelist-carousel">
+            <itemSize>${screenRatioItemSize}</itemSize>
+         </carousel>
+      </view>
    </variant>
 
 </theme>

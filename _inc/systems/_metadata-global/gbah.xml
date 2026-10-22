@@ -15,7 +15,7 @@
         <systemColorPalette3>BCBCBC</systemColorPalette3>
         <systemColorPalette4>212121</systemColorPalette4>
         <systemCartSize>112-67</systemCartSize>
-        <fanartSlotRatio>3-2</fanartSlotRatio>
+        <systemScreenRatio>3-2</systemScreenRatio>
     </variables>
     <language name="ar_SA">
         <variables>

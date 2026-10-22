@@ -17,7 +17,7 @@ The Neo Geo Pocket is considered to be an unsuccessful console. Lower than expec
         <systemColorPalette3>25374A</systemColorPalette3>
         <systemColorPalette4>0F1520</systemColorPalette4>
         <systemCartSize>257-229</systemCartSize>
-        <fanartSlotRatio>1-1</fanartSlotRatio>
+        <systemScreenRatio>1-1</systemScreenRatio>
     </variables>
     <language name="ar_SA">
         <variables>

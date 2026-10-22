@@ -1,6 +1,6 @@
 # XMB Menu True Ratio for ES-DE
 
-A fork of [XMB Menu for ES-DE](https://github.com/anthonycaccese/xmb-menu-es-de) by Ant and InitialDin. It adds fanart and title screen carousels that keep the XMB background, give every game slot its console's true screen ratio (PSP 16:9, GameCube 4:3, Game Boy 10:9, …) and play the game video inside the selected slot. See [True Ratio variants](#true-ratio-variants) below; everything else works as in the original theme.
+A fork of [XMB Menu for ES-DE](https://github.com/anthonycaccese/xmb-menu-es-de) by Ant and InitialDin. Title screen and fanart slots get their console's true screen ratio (PSP 16:9, GameCube 4:3, Game Boy 10:9, …), the game video plays in that ratio in every variant, and new variants keep the XMB background behind the carousel. See [True Ratio variants](#true-ratio-variants) below; everything else works as in the original theme.
 
 From the original README:
 
@@ -46,15 +46,16 @@ From the original README:
 
 ## **True Ratio variants**
 
-The `Fanart (XMB)` and `Title Screen (XMB)` variants, each also available with a marquee, work like this:
+- **All variants:** the game video plays in the console's screen ratio, as big as the selected slot
+- **`Title Screen`, `Title Screen (XMB)` and `Fanart (XMB)`** (each also with a marquee): every slot has the screen ratio of its console, and the image is cropped to fill it (no stretching, no letterboxing). The video covers the selected slot exactly.
+- **The `(XMB)` variants** also:
+   - keep the XMB background visible; the game art is shown in the carousel instead of behind it
+   - show an empty glass box instead of the name for games without the image (the name is already shown next to the slot)
+   - show the marquee at full brightness
 
-- The XMB background stays visible; the game art is shown in the carousel instead of behind it
-- Every slot has the screen ratio of its console, and the image is cropped to fill it (no stretching, no letterboxing)
-- The game video plays exactly inside the selected slot
-- Games without the image get an empty glass box instead of their name (the name is already shown next to the slot)
-- The marquee is shown at full brightness
+Boxart, Physical Media and Marquee slots keep their own shape, because covers, cartridges and logos are not screen-shaped.
 
-### **Slot ratio per console**
+### **Screen ratio per console**
 
 | Ratio | Consoles |
 |---|---|
@@ -66,9 +67,9 @@ The `Fanart (XMB)` and `Title Screen (XMB)` variants, each also available with a
 | `screen` | All Games, Favorites, Last Played and collections (same shape as your screen) |
 | `4-3` | Every other system |
 
-To change a console, edit `<fanartSlotRatio>` in its file in `_inc/systems/_metadata-global/` (for example `gc.xml`). A system without its own value uses `_default.xml`. The slot and video sizes for every screen and console ratio are in `_inc/fanart-slots/<screen ratio>/<console ratio>.xml`. Slots never get bigger than the original boxart slot, so tall ratios get narrower instead of taller.
+To change a console, edit `<systemScreenRatio>` in its file in `_inc/systems/_metadata-global/` (for example `gc.xml`). A system without its own value uses `_default.xml`. The slot and video sizes for every screen and console ratio are in `_inc/screen-ratio/<screen ratio>/<console ratio>.xml`. Slots never get bigger than the original boxart slot, so tall ratios get narrower instead of taller.
 
-The glass box colour is `textBackgroundColor` / `textSelectedBackgroundColor` in the True Ratio block of `theme.xml` (default `FFFFFF22`; the last two digits are the opacity).
+The glass box colour is `textBackgroundColor` / `textSelectedBackgroundColor` in the XMB background block of `theme.xml` (default `FFFFFF22`; the last two digits are the opacity).
 
 ## **Customizations**
 
