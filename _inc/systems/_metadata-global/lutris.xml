@@ -17,6 +17,7 @@ Lutris began as a piece of software called Oblivion Launcher, which was created 
         <systemColorPalette3>222222</systemColorPalette3>
         <systemColorPalette4>FFB700</systemColorPalette4>
         <systemCartSize>1-1</systemCartSize>
+        <fanartSlotRatio>16-9</fanartSlotRatio>
     </variables>
     <language name="ar_SA">
         <variables>

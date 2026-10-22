@@ -15,6 +15,7 @@
         <systemColorPalette3>999998</systemColorPalette3>
         <systemColorPalette4>8C8C8C</systemColorPalette4>
         <systemCartSize>1-1</systemCartSize>
+        <fanartSlotRatio>3-2</fanartSlotRatio>
     </variables>
     <language name="ar_SA">
         <variables>

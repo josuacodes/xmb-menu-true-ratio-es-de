@@ -15,6 +15,7 @@
         <systemColorPalette3>FBBD00</systemColorPalette3>
         <systemColorPalette4>31AA52</systemColorPalette4>
         <systemCartSize>1-1</systemCartSize>
+        <fanartSlotRatio>16-9</fanartSlotRatio>
     </variables>
     <language name="ar_SA">
         <variables>

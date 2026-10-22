@@ -17,6 +17,7 @@ It's notable that there are few exclusives on this console as Microsoft had star
         <systemColorPalette3>107C10</systemColorPalette3>
         <systemColorPalette4>7CB74E</systemColorPalette4>
         <systemCartSize>1-1</systemCartSize>
+        <fanartSlotRatio>16-9</fanartSlotRatio>
     </variables>
     <language name="ar_SA">
         <variables>

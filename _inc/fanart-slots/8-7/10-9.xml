@@ -1,0 +1,11 @@
+<!-- Fanart variants: 10-9 slot on a 8-7 screen (generated) -->
+<theme>
+   <view name="gamelist">
+      <carousel name="gamelist-carousel">
+         <itemSize>0.14 0.144</itemSize>
+      </carousel>
+      <video name="game-video">
+         <cropSize>0.266 0.2736</cropSize>
+      </video>
+   </view>
+</theme>

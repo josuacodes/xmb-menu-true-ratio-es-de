@@ -1,6 +1,6 @@
 <themeCapabilities>
    
-   <themeName>XMB Menu</themeName>
+   <themeName>XMB Menu True Ratio</themeName>
 
    <!--
    ///
@@ -223,31 +223,47 @@
    ///
    -->
    <variant name="gamelist-carousel-cover">
-      <label>Carousel: Boxart</label>
+      <label>Boxart</label>
       <selectable>true</selectable>
    </variant>
    <variant name="gamelist-carousel-cover-marquee">
-      <label>Carousel: Boxart + Marquee</label>
+      <label>Boxart + Marquee</label>
       <selectable>true</selectable>
    </variant>
    <variant name="gamelist-carousel-titlescreen">
-      <label>Carousel: Title Screen</label>
+      <label>Title Screen</label>
       <selectable>true</selectable>
    </variant>
    <variant name="gamelist-carousel-titlescreen-marquee">
-      <label>Carousel: Title Screen + Marquee</label>
+      <label>Title Screen + Marquee</label>
       <selectable>true</selectable>
    </variant>
    <variant name="gamelist-carousel-physicalmedia">
-      <label>Carousel: Physical Media</label>
+      <label>Physical Media</label>
       <selectable>true</selectable>
    </variant>
    <variant name="gamelist-carousel-physicalmedia-marquee">
-      <label>Carousel: Physical Media + Marquee</label>
+      <label>Physical Media + Marquee</label>
+      <selectable>true</selectable>
+   </variant>
+   <variant name="gamelist-carousel-fanart">
+      <label>Fanart (XMB)</label>
+      <selectable>true</selectable>
+   </variant>
+   <variant name="gamelist-carousel-fanart-marquee">
+      <label>Fanart + Marquee (XMB)</label>
+      <selectable>true</selectable>
+   </variant>
+   <variant name="gamelist-carousel-titlescreen-xmb">
+      <label>Title Screen (XMB)</label>
+      <selectable>true</selectable>
+   </variant>
+   <variant name="gamelist-carousel-titlescreen-xmb-marquee">
+      <label>Title Screen + Marquee (XMB)</label>
       <selectable>true</selectable>
    </variant>
    <variant name="gamelist-carousel-marquee">
-      <label>Carousel: Marquee</label>
+      <label>Marquee</label>
       <selectable>true</selectable>
    </variant>
     

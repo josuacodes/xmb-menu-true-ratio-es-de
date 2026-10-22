@@ -17,6 +17,7 @@ The console was first officially announced at E3 2005, and was released at the e
         <systemColorPalette3>0095D5</systemColorPalette3>
         <systemColorPalette4>3DD3C8</systemColorPalette4>
         <systemCartSize>1-1</systemCartSize>
+        <fanartSlotRatio>16-9</fanartSlotRatio>
     </variables>
     <language name="ar_SA">
         <variables>

@@ -315,7 +315,38 @@ https://github.com/anthonycaccese/basic-xmb-es-de
          </carousel>
       </view>
    </variant>
-   <variant name="gamelist-carousel-cover-marquee,gamelist-carousel-titlescreen-marquee,gamelist-carousel-physicalmedia-marquee">
+   <variant name="gamelist-carousel-fanart,gamelist-carousel-fanart-marquee,gamelist-carousel-titlescreen-xmb,gamelist-carousel-titlescreen-xmb-marquee">
+      <view name="gamelist">
+         <!-- Game art is the carousel image, so keep the XMB background behind it -->
+         <image name="background-game-art">
+            <visible>false</visible>
+         </image>
+         <carousel name="gamelist-carousel">
+            <!-- Crop the image to fill the slot instead of letterboxing it -->
+            <imageFit>cover</imageFit>
+            <!-- Games without fanart: faint glass box, no name (it is shown next to the slot) -->
+            <textColor>00000000</textColor>
+            <textSelectedColor>00000000</textSelectedColor>
+            <textBackgroundColor>FFFFFF22</textBackgroundColor>
+            <textSelectedBackgroundColor>FFFFFF22</textSelectedBackgroundColor>
+         </carousel>
+      </view>
+   </variant>
+   <variant name="gamelist-carousel-fanart,gamelist-carousel-fanart-marquee">
+      <view name="gamelist">
+         <carousel name="gamelist-carousel">
+            <imageType>fanart</imageType>
+         </carousel>
+      </view>
+   </variant>
+   <variant name="gamelist-carousel-titlescreen-xmb,gamelist-carousel-titlescreen-xmb-marquee">
+      <view name="gamelist">
+         <carousel name="gamelist-carousel">
+            <imageType>titlescreen</imageType>
+         </carousel>
+      </view>
+   </variant>
+   <variant name="gamelist-carousel-cover-marquee,gamelist-carousel-titlescreen-marquee,gamelist-carousel-physicalmedia-marquee,gamelist-carousel-fanart-marquee,gamelist-carousel-titlescreen-xmb-marquee">
       <view name="gamelist">
          <image name="gamelist-marquee">
             <origin>1 1</origin>
@@ -324,6 +355,14 @@ https://github.com/anthonycaccese/basic-xmb-es-de
             <metadataElement>true</metadataElement>
             <interpolation>linear</interpolation>
             <zIndex>50</zIndex>
+         </image>
+      </view>
+   </variant>
+   <variant name="gamelist-carousel-fanart-marquee,gamelist-carousel-titlescreen-xmb-marquee">
+      <view name="gamelist">
+         <!-- No fanart background behind it, so no need to dim the marquee -->
+         <image name="gamelist-marquee">
+            <color>FFFFFF</color>
          </image>
       </view>
    </variant>
