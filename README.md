@@ -1,6 +1,6 @@
 # XMB Menu True Ratio for ES-DE
 
-A fork of [XMB Menu for ES-DE](https://github.com/anthonycaccese/xmb-menu-es-de) by Ant and InitialDin. Title screen and fanart slots get their console's true screen ratio (PSP 16:9, GameCube 4:3, Game Boy 10:9, …), the game video plays in that ratio in every variant, and new variants keep the XMB background behind the carousel. See [True Ratio variants](#true-ratio-variants) below; everything else works as in the original theme.
+A fork of [XMB Menu for ES-DE](https://github.com/anthonycaccese/xmb-menu-es-de) by Ant and InitialDin. Title screen and fanart slots get their console's true screen ratio (PSP 16:9, GameCube 4:3, Game Boy 10:9, …), the game video plays exactly inside that slot, and new variants keep the XMB background behind the carousel. See [True Ratio variants](#true-ratio-variants) below; everything else works as in the original theme.
 
 From the original README:
 
@@ -46,9 +46,9 @@ From the original README:
 
 ## **True Ratio variants**
 
-- **All variants:** the game video plays in the console's screen ratio, as big as the selected slot, and games without the image get an empty glass box instead of their name (the name is already shown next to the slot)
-- **`Boxart` and `Physical Media`** (each also with a marquee): every slot has the shape of the console's cover or cartridge (`systemCoverSize` / `systemCartSize`), so covers fit exactly and the glass box has the same shape
-- **`Title Screen`, `Title Screen (XMB)` and `Fanart (XMB)`** (each also with a marquee): every slot has the screen ratio of its console, and the image is cropped to fill it (no stretching, no letterboxing). The video covers the selected slot exactly.
+- **All variants:** games without the image get an empty glass box instead of their name (the name is already shown next to the slot)
+- **`Boxart` and `Physical Media`** (each also with a marquee): every slot has the shape of the console's cover or cartridge (`systemCoverSize` / `systemCartSize`), so covers fit exactly and the glass box has the same shape. These variants (and `Marquee`) play no video, because a video can't hide an image of a different shape behind it
+- **`Title Screen`, `Title Screen (XMB)` and `Fanart (XMB)`** (each also with a marquee): every slot has the screen ratio of its console, and the image is cropped to fill it (no stretching, no letterboxing). The game video plays exactly inside the selected slot, cropped to fill it the same way.
 - **The `(XMB)` variants** also:
    - keep the XMB background visible; the game art is shown in the carousel instead of behind it
    - show the marquee at full brightness (the other variants dim it, because the fanart background is behind it)

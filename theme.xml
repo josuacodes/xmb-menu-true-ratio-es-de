@@ -325,6 +325,15 @@ https://github.com/anthonycaccese/basic-xmb-es-de
          </carousel>
       </view>
    </variant>
+   <!-- No video where the slot isn't screen-shaped: the image behind it can't be hidden -->
+   <variant name="gamelist-carousel-cover,gamelist-carousel-cover-marquee,gamelist-carousel-physicalmedia,gamelist-carousel-physicalmedia-marquee,gamelist-carousel-marquee">
+      <view name="gamelist">
+         <video name="game-video">
+            <audio>false</audio>
+            <visible>false</visible>
+         </video>
+      </view>
+   </variant>
    <!-- True ratio: slot in the console's screen shape (size set in the aspect-ratio files) -->
    <variant name="gamelist-carousel-titlescreen,gamelist-carousel-titlescreen-marquee,gamelist-carousel-titlescreen-xmb,gamelist-carousel-titlescreen-xmb-marquee,gamelist-carousel-fanart,gamelist-carousel-fanart-marquee">
       <view name="gamelist">
