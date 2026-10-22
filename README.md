@@ -1,6 +1,10 @@
-# XMB Menu for ES-DE
+# XMB Menu True Ratio for ES-DE
 
-This is a translation of the PSP XMB menu for ES-DE. The xml was originally built by InitialDin and I've done a refactor to clean up image assets, add color scheme support, customizations and additional aspect ratios. This repository will maintain our shared work so that it can be used with ES-DE's theme downloader.
+A fork of [XMB Menu for ES-DE](https://github.com/anthonycaccese/xmb-menu-es-de) by Ant and InitialDin. It adds fanart and title screen carousels that keep the XMB background, give every game slot its console's true screen ratio (PSP 16:9, GameCube 4:3, Game Boy 10:9, …) and play the game video inside the selected slot. See [True Ratio variants](#true-ratio-variants) below; everything else works as in the original theme.
+
+From the original README:
+
+> This is a translation of the PSP XMB menu for ES-DE. The xml was originally built by InitialDin and I've done a refactor to clean up image assets, add color scheme support, customizations and additional aspect ratios. This repository will maintain our shared work so that it can be used with ES-DE's theme downloader.
 
 ## **Preview**
 
@@ -9,11 +13,13 @@ This is a translation of the PSP XMB menu for ES-DE. The xml was originally buil
 ## **Configuration Options**
 
 - The theme has a simple set of options that can be changed directly from the UI Settings menu of ES-DE 
-- `Theme Variant` - Sets the layout used for the gamelist view when media & metadata are scraped for your games.  There are 4 variants to choose from:
-   - `Carousel: Boxart` - A simple carousel that displays game cover artwork
-   - `Carousel: Marquee` - A simple carousel that displays game marquee artwork
-   - `Carousel: Title Screen` - A simple carousel that displays game title screens
-   - `Carousel: Physical Media` - A simple carousel that displays game physical media
+- `Theme Variant` - Sets the layout used for the gamelist view when media & metadata are scraped for your games.  There are 11 variants to choose from:
+   - `Boxart` - A simple carousel that displays game cover artwork
+   - `Marquee` - A simple carousel that displays game marquee artwork
+   - `Title Screen` - A simple carousel that displays game title screens
+   - `Physical Media` - A simple carousel that displays game physical media
+   - `Boxart + Marquee`, `Title Screen + Marquee`, `Physical Media + Marquee` - The same carousels with the game marquee in the bottom right corner
+   - `Fanart (XMB)`, `Fanart + Marquee (XMB)`, `Title Screen (XMB)`, `Title Screen + Marquee (XMB)` - See [True Ratio variants](#true-ratio-variants)
 - `Theme Color Scheme` - Sets the color scheme, system artwork and system logo used on all views.  This can be customized by following the instructions in the [Customizations](#customizations) section below.
 - `Theme Font Size` - Sets the font size to use. I've included font sizes built to scale well from small handheld screens all the way up through larger tv screens.
 - `Theme Aspect Ratio` - Sets the aspect ratio that the theme will render at. This should happen automatically but if needed, this can be changed manually to match the aspect ratio of your screen.  16:9, 16:10, 4:3, 3:2, 8:7, 20:9 and 1:1 are supported
@@ -38,6 +44,32 @@ This is a translation of the PSP XMB menu for ES-DE. The xml was originally buil
    </tr>
 </table>
 
+## **True Ratio variants**
+
+The `Fanart (XMB)` and `Title Screen (XMB)` variants, each also available with a marquee, work like this:
+
+- The XMB background stays visible; the game art is shown in the carousel instead of behind it
+- Every slot has the screen ratio of its console, and the image is cropped to fill it (no stretching, no letterboxing)
+- The game video plays exactly inside the selected slot
+- Games without the image get an empty glass box instead of their name (the name is already shown next to the slot)
+- The marquee is shown at full brightness
+
+### **Slot ratio per console**
+
+| Ratio | Consoles |
+|---|---|
+| `16-9` | PSP, PS Vita, Switch, Wii U, PS3, PS4, Xbox 360, Xbox One, Virtual Boy, Playdate, PC/Steam/Windows, Android |
+| `3-2` | Game Boy Advance, Lynx, WonderSwan (Color), Pokémon Mini |
+| `10-9` | Game Boy, Game Boy Color, Game Gear, Mega Duck |
+| `1-1` | Neo Geo Pocket (Color), Supervision, Gamate |
+| `2-3` | Nintendo DS (both screens stacked) |
+| `screen` | All Games, Favorites, Last Played and collections (same shape as your screen) |
+| `4-3` | Every other system |
+
+To change a console, edit `<fanartSlotRatio>` in its file in `_inc/systems/_metadata-global/` (for example `gc.xml`). A system without its own value uses `_default.xml`. The slot and video sizes for every screen and console ratio are in `_inc/fanart-slots/<screen ratio>/<console ratio>.xml`. Slots never get bigger than the original boxart slot, so tall ratios get narrower instead of taller.
+
+The glass box colour is `textBackgroundColor` / `textSelectedBackgroundColor` in the True Ratio block of `theme.xml` (default `FFFFFF22`; the last two digits are the opacity).
+
 ## **Customizations**
 
 ### **Creating your own color scheme**
@@ -46,11 +78,11 @@ A custom color scheme lets you to modify any of the colors and backgrounds used 
 
 #### Instructions:
 
-1) In the resources folder you will find a template file called [custom.xml](https://github.com/anthonycaccese/xmb-menu-es-de/blob/main/resources/custom.xml)
+1) In the resources folder you will find a template file called [custom.xml](https://github.com/josuacodes/xmb-menu-true-ratio-es-de/blob/main/resources/custom.xml)
 
 2) Place a copy of that file into the `theme-customizations` folder. The folder structure should look like this when you are done:
    ```
-   /ES-DE/themes/xmb-menu-es-de/theme-customizations/custom.xml
+   /ES-DE/themes/xmb-menu-true-ratio-es-de/theme-customizations/custom.xml
    ```
 
 3) Edit the properites in `custom.xml` to create your custom color scheme.  All properties are optional so you only need to include the properties you actually change.  Any others can be removed and will fallback automatically to defaults.
@@ -111,6 +143,8 @@ Here is a preview of what is possible through customizations along with the XML 
 
 - Inspired by the design of the Cross Media bar by Sony for the PSP &amp; PS3
 - The orignal XML for this theme was created by InitialDin
+- [XMB Menu for ES-DE](https://github.com/anthonycaccese/xmb-menu-es-de), which this fork is based on, is maintained by Ant ([anthonycaccese](https://github.com/anthonycaccese))
+- The True Ratio variants were added in this fork by [josuacodes](https://github.com/josuacodes)
 - System Controller Icons were sourced from [RobZombie9043](https://github.com/RobZombie9043) work in https://github.com/RobZombie9043/xmb-es-de
 - System Physical Media Icons were sourced from RetroArch's XMB monochrome theme in https://github.com/libretro/retroarch-assets/tree/master/xmb/monochrome
 
