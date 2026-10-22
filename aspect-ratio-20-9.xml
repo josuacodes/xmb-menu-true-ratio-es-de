@@ -7,6 +7,7 @@ based on 2400x1080
    <!-- Original sizes, used if the console's size file is missing -->
    <variables>
       <screenRatioItemSize>0.1116667 0.170</screenRatioItemSize>
+      <boxRatioItemSize>0.1116667 0.170</boxRatioItemSize>
       <screenRatioVideoSize>0.2241667 0.33</screenRatioVideoSize>
    </variables>
    <!-- Console screen sizes, see systemScreenRatio in _inc/systems/_metadata-global -->
@@ -190,6 +191,24 @@ based on 2400x1080
       </view>
    </variant>
 
+   <!-- Boxart and Physical Media: slot in the console's cover / cartridge shape
+        (systemCoverSize / systemCartSize in _inc/systems/_metadata-global) -->
+   <variant name="gamelist-carousel-cover,gamelist-carousel-cover-marquee">
+      <include>./_inc/box-ratio/20-9/${systemCoverSize}.xml</include>
+      <view name="gamelist">
+         <carousel name="gamelist-carousel">
+            <itemSize>${boxRatioItemSize}</itemSize>
+         </carousel>
+      </view>
+   </variant>
+   <variant name="gamelist-carousel-physicalmedia,gamelist-carousel-physicalmedia-marquee">
+      <include>./_inc/box-ratio/20-9/${systemCartSize}.xml</include>
+      <view name="gamelist">
+         <carousel name="gamelist-carousel">
+            <itemSize>${boxRatioItemSize}</itemSize>
+         </carousel>
+      </view>
+   </variant>
    <variant name="gamelist-carousel-titlescreen,gamelist-carousel-titlescreen-marquee,gamelist-carousel-titlescreen-xmb,gamelist-carousel-titlescreen-xmb-marquee,gamelist-carousel-fanart,gamelist-carousel-fanart-marquee">
       <view name="gamelist">
          <carousel name="gamelist-carousel">

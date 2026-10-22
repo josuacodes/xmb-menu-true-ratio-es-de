@@ -46,14 +46,14 @@ From the original README:
 
 ## **True Ratio variants**
 
-- **All variants:** the game video plays in the console's screen ratio, as big as the selected slot
+- **All variants:** the game video plays in the console's screen ratio, as big as the selected slot, and games without the image get an empty glass box instead of their name (the name is already shown next to the slot)
+- **`Boxart` and `Physical Media`** (each also with a marquee): every slot has the shape of the console's cover or cartridge (`systemCoverSize` / `systemCartSize`), so covers fit exactly and the glass box has the same shape
 - **`Title Screen`, `Title Screen (XMB)` and `Fanart (XMB)`** (each also with a marquee): every slot has the screen ratio of its console, and the image is cropped to fill it (no stretching, no letterboxing). The video covers the selected slot exactly.
 - **The `(XMB)` variants** also:
    - keep the XMB background visible; the game art is shown in the carousel instead of behind it
-   - show an empty glass box instead of the name for games without the image (the name is already shown next to the slot)
-   - show the marquee at full brightness
+   - show the marquee at full brightness (the other variants dim it, because the fanart background is behind it)
 
-Boxart, Physical Media and Marquee slots keep their own shape, because covers, cartridges and logos are not screen-shaped.
+Marquee slots keep their original shape, because logos have no fixed shape.
 
 ### **Screen ratio per console**
 
@@ -67,9 +67,9 @@ Boxart, Physical Media and Marquee slots keep their own shape, because covers, c
 | `screen` | All Games, Favorites, Last Played and collections (same shape as your screen) |
 | `4-3` | Every other system |
 
-To change a console, edit `<systemScreenRatio>` in its file in `_inc/systems/_metadata-global/` (for example `gc.xml`). A system without its own value uses `_default.xml`. The slot and video sizes for every screen and console ratio are in `_inc/screen-ratio/<screen ratio>/<console ratio>.xml`. Slots never get bigger than the original boxart slot, so tall ratios get narrower instead of taller.
+To change a console, edit `<systemScreenRatio>` in its file in `_inc/systems/_metadata-global/` (for example `gc.xml`). A system without its own value uses `_default.xml`. The slot and video sizes for every screen and console ratio are in `_inc/screen-ratio/<screen ratio>/<console ratio>.xml`. Cover and cartridge slots work the same way with `_inc/box-ratio/<screen ratio>/<systemCoverSize or systemCartSize>.xml`. Slots never get bigger than the original boxart slot, so tall ratios get narrower instead of taller.
 
-The glass box colour is `textBackgroundColor` / `textSelectedBackgroundColor` in the XMB background block of `theme.xml` (default `FFFFFF22`; the last two digits are the opacity).
+The glass box colour is `textBackgroundColor` / `textSelectedBackgroundColor` in the `gamelist-carousel` of `theme.xml` (default `FFFFFF22`; the last two digits are the opacity).
 
 ## **Customizations**
 

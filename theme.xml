@@ -204,8 +204,11 @@ https://github.com/anthonycaccese/basic-xmb-es-de
          <!--<defaultImage>./_inc/images/default_game.png</defaultImage>
          <defaultFolderImage>./_inc/images/default_game.png</defaultFolderImage>-->
          <unfocusedItemOpacity>0.9</unfocusedItemOpacity>
-         <textColor>${textColor}</textColor>
-         <textBackgroundColor>${surfaceColor}</textBackgroundColor>
+         <!-- Games without the image: faint glass box, no name (it is shown next to the slot) -->
+         <textColor>00000000</textColor>
+         <textSelectedColor>00000000</textSelectedColor>
+         <textBackgroundColor>FFFFFF22</textBackgroundColor>
+         <textSelectedBackgroundColor>FFFFFF22</textSelectedBackgroundColor>
          <fontPath>${fontBold}</fontPath>
          <color>00000000</color>
          <fastScrolling>true</fastScrolling>
@@ -337,13 +340,6 @@ https://github.com/anthonycaccese/basic-xmb-es-de
          <image name="background-game-art">
             <visible>false</visible>
          </image>
-         <carousel name="gamelist-carousel">
-            <!-- Games without the image: faint glass box, no name (it is shown next to the slot) -->
-            <textColor>00000000</textColor>
-            <textSelectedColor>00000000</textSelectedColor>
-            <textBackgroundColor>FFFFFF22</textBackgroundColor>
-            <textSelectedBackgroundColor>FFFFFF22</textSelectedBackgroundColor>
-         </carousel>
       </view>
    </variant>
    <variant name="gamelist-carousel-cover-marquee,gamelist-carousel-titlescreen-marquee,gamelist-carousel-physicalmedia-marquee,gamelist-carousel-fanart-marquee,gamelist-carousel-titlescreen-xmb-marquee">
