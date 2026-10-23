@@ -30,10 +30,11 @@ ITEM_SCALE = 1.9  # selected item zoom from the aspect-ratio files
 VIDEO_OVERSCAN = 0.005
 
 # Console display ratios; "screen" = same shape as the screen (mixed collections)
-RATIOS = {"16-9": 16 / 9, "4-3": 4 / 3, "3-2": 3 / 2, "10-9": 10 / 9, "1-1": 1.0, "2-3": 2 / 3, "screen": None}
+RATIOS = {"16-9": 16 / 9, "5-3": 5 / 3, "4-3": 4 / 3, "3-2": 3 / 2, "10-9": 10 / 9, "1-1": 1.0, "2-3": 2 / 3, "screen": None}
 
 CONSOLES = {
-    "16-9": "psp psvita switch wiiu ps3 ps4 xbox360 xboxone virtualboy playdate steam windows epic lutris moonlight android androidapps androidgames",
+    "16-9": "psp psvita switch wiiu ps3 ps4 xbox360 xboxone virtualboy steam windows epic lutris moonlight android androidapps androidgames",
+    "5-3": "n3ds playdate",  # 400x240, scraped 3DS videos show the top screen only
     "3-2": "gba gbah atarilynx wonderswan wonderswancolor pokemini",
     "10-9": "gb gbh gbc gbch gamegear megaduck",
     "1-1": "ngp ngpc supervision gamate",

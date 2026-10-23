@@ -59,7 +59,8 @@ Marquee slots keep their original shape, because logos have no fixed shape.
 
 | Ratio | Consoles |
 |---|---|
-| `16-9` | PSP, PS Vita, Switch, Wii U, PS3, PS4, Xbox 360, Xbox One, Virtual Boy, Playdate, PC/Steam/Windows, Android |
+| `16-9` | PSP, PS Vita, Switch, Wii U, PS3, PS4, Xbox 360, Xbox One, Virtual Boy, PC/Steam/Windows, Android |
+| `5-3` | Nintendo 3DS (top screen, like the scraped videos), Playdate |
 | `3-2` | Game Boy Advance, Lynx, WonderSwan (Color), Pokémon Mini |
 | `10-9` | Game Boy, Game Boy Color, Game Gear, Mega Duck |
 | `1-1` | Neo Geo Pocket (Color), Supervision, Gamate |
