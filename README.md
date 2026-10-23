@@ -8,7 +8,9 @@ From the original README:
 
 ## **Preview**
 
-![Preview](https://github.com/user-attachments/assets/77926f1b-1f0c-4a21-873a-b7191ce26c31)
+![Title Screen variant: PS2 title screen in a 4:3 slot over the game's fanart](resources/screenshots/title-screen.jpg)
+
+More screenshots of the new variants are in [True Ratio variants](#true-ratio-variants).
 
 ## **Configuration Options**
 
@@ -25,6 +27,8 @@ From the original README:
 - `Theme Aspect Ratio` - Sets the aspect ratio that the theme will render at. This should happen automatically but if needed, this can be changed manually to match the aspect ratio of your screen.  16:9, 16:10, 4:3, 3:2, 8:7, 20:9 and 1:1 are supported
 
 ### **Built-in Color Schemes**
+
+Screenshots from the original theme; the color schemes are unchanged.
 
 <table>
    <tr>
@@ -54,6 +58,21 @@ From the original README:
    - show the marquee at full brightness (the other variants dim it, because the fanart background is behind it)
 
 Marquee slots keep their original shape, because logos have no fixed shape.
+
+<table>
+   <tr>
+      <td><img src="resources/screenshots/title-screen-xmb.jpg" alt="Title Screen (XMB): PS2 title screen in a 4:3 slot on the XMB background"/><br><sub><code>Title Screen (XMB)</code>: 4:3 slot on the XMB background</sub></td>
+      <td><img src="resources/screenshots/title-screen-xmb-video.jpg" alt="The game video playing exactly over the selected slot"/><br><sub>A few seconds later the video plays exactly over the slot</sub></td>
+   </tr>
+   <tr>
+      <td><img src="resources/screenshots/nds-true-ratio.jpg" alt="Title Screen: Nintendo DS title screen in a tall 2:3 slot"/><br><sub><code>Title Screen</code>: Nintendo DS in its 2:3 slot (both screens)</sub></td>
+      <td><img src="resources/screenshots/title-screen-xmb-marquee.jpg" alt="Title Screen + Marquee (XMB) with a GameCube game"/><br><sub><code>Title Screen + Marquee (XMB)</code>: marquee at full brightness</sub></td>
+   </tr>
+   <tr>
+      <td><img src="resources/screenshots/glass-placeholder.jpg" alt="A game without a title screen shown as an empty glass box"/><br><sub>Games without the image get an empty glass box</sub></td>
+      <td><img src="resources/screenshots/title-screen.jpg" alt="Title Screen with the fanart background"/><br><sub><code>Title Screen</code>: the same slots over the game's fanart</sub></td>
+   </tr>
+</table>
 
 ### **Screen ratio per console**
 
