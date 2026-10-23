@@ -67,7 +67,7 @@ Marquee slots keep their original shape, because logos have no fixed shape.
 | `screen` | All Games, Favorites, Last Played and collections (same shape as your screen) |
 | `4-3` | Every other system |
 
-To change a console, edit `<systemScreenRatio>` in its file in `_inc/systems/_metadata-global/` (for example `gc.xml`). A system without its own value uses `_default.xml`. The slot and video sizes for every screen and console ratio are in `_inc/screen-ratio/<screen ratio>/<console ratio>.xml`. Cover and cartridge slots work the same way with `_inc/box-ratio/<screen ratio>/<systemCoverSize or systemCartSize>.xml`. Slots never get bigger than the original boxart slot, so tall ratios get narrower instead of taller.
+To change a console, edit `<systemScreenRatio>` in its file in `_inc/systems/_metadata-global/` (for example `gc.xml`). A system without its own value uses `_default.xml`. To keep the change, also add the console to the `CONSOLES` table in [`resources/generate-true-ratio.py`](resources/generate-true-ratio.py): running the script (`python3 resources/generate-true-ratio.py`) regenerates all size files and resets the metadata values to that table. The slot and video sizes for every screen and console ratio are in `_inc/screen-ratio/<screen ratio>/<console ratio>.xml`. Cover and cartridge slots work the same way with `_inc/box-ratio/<screen ratio>/<systemCoverSize or systemCartSize>.xml`. Slots never get bigger than the original boxart slot, so tall ratios get narrower instead of taller.
 
 The glass box colour is `textBackgroundColor` / `textSelectedBackgroundColor` in the `gamelist-carousel` of `theme.xml` (default `FFFFFF22`; the last two digits are the opacity).
 
