@@ -1,7 +1,7 @@
 <!-- 3-2 console screen on a 16-9 display (generated) -->
 <theme>
    <variables>
-      <screenRatioItemSize>0.14 0.1659259</screenRatioItemSize>
-      <screenRatioVideoSize>0.271 0.3241481</screenRatioVideoSize>
+      <screenRatioItemSize>0.1280172 0.1517241</screenRatioItemSize>
+      <screenRatioVideoSize>0.2482328 0.2971648</screenRatioVideoSize>
    </variables>
 </theme>

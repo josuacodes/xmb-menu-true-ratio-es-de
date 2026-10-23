@@ -12,18 +12,32 @@ from pathlib import Path
 
 theme = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parent.parent
 
-# Screen aspect files: (ratio, max slot width as fraction of screen width)
-SCREENS = {
-    "16-9": (16 / 9, 0.140),
-    "16-10": (16 / 10, 0.140),
-    "3-2": (3 / 2, 0.140),
-    "4-3": (4 / 3, 0.140),
-    "8-7": (8 / 7, 0.140),
-    "1-1": (1.0, 0.140),
-    "20-9": (20 / 9, 0.1116667),
-}
-MAX_H = 0.170  # original boxart slot height, keeps tall slots inside the layout
 ITEM_SCALE = 1.9  # selected item zoom from the aspect-ratio files
+SELECTED_MARGIN = 0.04  # selectedItemMargins (vertical) from the aspect-ratio files
+GAP = 0.02  # minimum free space between the selected slot and its neighbours
+
+
+def max_height(max_item_count):
+    """Tallest slot that keeps GAP to the neighbours (all fractions of screen height).
+
+    The carousel puts neighbours 1 / maxItemCount + selectedItemMargins away from the
+    selected slot's centre, so its half (zoomed) plus the neighbour's half must fit.
+    """
+    spacing = 1 / max_item_count
+    return min(0.170, 2 * (spacing + SELECTED_MARGIN - GAP) / (ITEM_SCALE + 1), spacing - GAP)
+
+
+# Screen aspect files: (ratio, max slot width as fraction of screen width, max slot height)
+# Width keeps the zoomed slot left of the game text; maxItemCount is from the aspect file.
+SCREENS = {
+    "16-9": (16 / 9, 0.140, max_height(5)),
+    "16-10": (16 / 10, 0.140, max_height(5)),
+    "3-2": (3 / 2, 0.140, max_height(5)),
+    "4-3": (4 / 3, 0.140, max_height(5)),
+    "8-7": (8 / 7, 0.140, max_height(5.75)),
+    "1-1": (1.0, 0.140, max_height(5)),
+    "20-9": (20 / 9, 0.1116667, max_height(5)),
+}
 # ES-DE rounds the image to whole pixels but not the video, so their edges can be
 # half a pixel apart. Overscan the video by this share of the screen width
 # (same pixel amount vertically) so it always covers the image edges.
@@ -48,20 +62,20 @@ def fmt(v):
     return f"{v:.7f}".rstrip("0").rstrip(".")
 
 
-def slot(screen_ratio, max_w, ratio):
+def slot(screen_ratio, max_w, max_h, ratio):
     r = screen_ratio if ratio is None else ratio
-    w = min(max_w, MAX_H * r / screen_ratio)
+    w = min(max_w, max_h * r / screen_ratio)
     return w, w * screen_ratio / r
 
 
 # 1) size variables: _inc/screen-ratio/<screen>/<console ratio>.xml
 out = theme / "_inc" / "screen-ratio"
 shutil.rmtree(out, ignore_errors=True)
-for sname, (s, max_w) in SCREENS.items():
+for sname, (s, max_w, max_h) in SCREENS.items():
     d = out / sname
     d.mkdir(parents=True)
     for rname, r in RATIOS.items():
-        w, h = slot(s, max_w, r)
+        w, h = slot(s, max_w, max_h, r)
         (d / f"{rname}.xml").write_text(
             f"""<!-- {rname} console screen on a {sname} display (generated) -->
 <theme>
@@ -81,13 +95,13 @@ for f in meta.glob("*.xml"):
     box_sizes |= set(re.findall(r"<system(?:Cover|Cart)Size>(\d+-\d+)</", f.read_text()))
 box_out = theme / "_inc" / "box-ratio"
 shutil.rmtree(box_out, ignore_errors=True)
-for sname, (s, max_w) in SCREENS.items():
+for sname, (s, max_w, max_h) in SCREENS.items():
     d = box_out / sname
     d.mkdir(parents=True)
     for size in sorted(box_sizes):
         bw, bh = map(int, size.split("-"))
-        w, h = slot(s, max_w, bw / bh)
-        assert abs((w * s) / h - bw / bh) < 1e-9 and w <= max_w + 1e-9 and h <= MAX_H + 1e-9, (sname, size)
+        w, h = slot(s, max_w, max_h, bw / bh)
+        assert abs((w * s) / h - bw / bh) < 1e-9 and w <= max_w + 1e-9 and h <= max_h + 1e-9, (sname, size)
         (d / f"{size}.xml").write_text(
             f"""<!-- {size} cover or cartridge on a {sname} display (generated) -->
 <theme>
@@ -121,9 +135,9 @@ for name, rname in assign.items():
     f.write_text(text)
 
 # 3) self-check: every slot has the intended on-screen shape and fits the box
-for sname, (s, max_w) in SCREENS.items():
+for sname, (s, max_w, max_h) in SCREENS.items():
     for rname, r in RATIOS.items():
-        w, h = slot(s, max_w, r)
+        w, h = slot(s, max_w, max_h, r)
         assert abs((w * s) / h - (s if r is None else r)) < 1e-9, (sname, rname)
-        assert w <= max_w + 1e-9 and h <= MAX_H + 1e-9, (sname, rname)
+        assert w <= max_w + 1e-9 and h <= max_h + 1e-9, (sname, rname)
 print("ok:", len(SCREENS) * len(RATIOS), "size files,", len(assign), "consoles")
