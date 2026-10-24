@@ -1,6 +1,8 @@
 # XMB Menu True Ratio for ES-DE
 
-A fork of [XMB Menu for ES-DE](https://github.com/anthonycaccese/xmb-menu-es-de) by Ant and InitialDin. Title screen and fanart slots get their console's true screen ratio (PSP 16:9, GameCube 4:3, Game Boy 10:9, …), the game video plays exactly inside that slot, and new variants keep the XMB background behind the carousel. See [True Ratio variants](#true-ratio-variants) below; everything else works as in the original theme.
+A fork of [XMB Menu for ES-DE](https://github.com/anthonycaccese/xmb-menu-es-de) by Ant and InitialDin. The idea was to have theme variants that are closer to the PSP. Title screen and fanart slots get their console's true screen ratio (PSP 16:9, GameCube 4:3, Game Boy 10:9, …), the game video plays exactly inside that slot, and new variants keep the XMB background behind the carousel. Games with missing artwork get a placeholder closer to the PSP original. For more details and screenshots see [True Ratio variants](#true-ratio-variants) below; everything else works as in the original theme.
+
+**Note on AI use:** I made these changes with an AI coding assistant (Claude), which also helped me learn how the ES-DE theme system works. I reviewed the changes and tested the variants on my own device.
 
 From the original README:
 
@@ -15,16 +17,28 @@ More screenshots of the new variants are in [True Ratio variants](#true-ratio-va
 ## **Configuration Options**
 
 - The theme has a simple set of options that can be changed directly from the UI Settings menu of ES-DE 
-- `Theme Variant` - Sets the layout used for the gamelist view when media & metadata are scraped for your games.  There are 11 variants to choose from:
-   - `Boxart` - A simple carousel that displays game cover artwork
-   - `Marquee` - A simple carousel that displays game marquee artwork
-   - `Title Screen` - A simple carousel that displays game title screens
-   - `Physical Media` - A simple carousel that displays game physical media
-   - `Boxart + Marquee`, `Title Screen + Marquee`, `Physical Media + Marquee` - The same carousels with the game marquee in the bottom right corner
-   - `Fanart (XMB)`, `Fanart + Marquee (XMB)`, `Title Screen (XMB)`, `Title Screen + Marquee (XMB)` - See [True Ratio variants](#true-ratio-variants)
+- `Theme Variant` - Sets the layout used for the gamelist view when media & metadata are scraped for your games.  There are 11 variants to choose from, see [Theme Variants](#theme-variants) below.
 - `Theme Color Scheme` - Sets the color scheme, system artwork and system logo used on all views.  This can be customized by following the instructions in the [Customizations](#customizations) section below.
 - `Theme Font Size` - Sets the font size to use. I've included font sizes built to scale well from small handheld screens all the way up through larger tv screens.
 - `Theme Aspect Ratio` - Sets the aspect ratio that the theme will render at. This should happen automatically but if needed, this can be changed manually to match the aspect ratio of your screen.  16:9, 16:10, 4:3, 3:2, 8:7, 20:9 and 1:1 are supported
+
+### **Theme Variants**
+
+| Variant | Game image | Slot shape | Background | Video | Marquee |
+|---|---|---|---|---|---|
+| Boxart | Cover | Console's cover shape | Fanart | ❌ | ❌ |
+| Boxart + Marquee | Cover | Console's cover shape | Fanart | ❌ | Dimmed |
+| Physical Media | Disc / cartridge | Console's cartridge shape | Fanart | ❌ | ❌ |
+| Physical Media + Marquee | Disc / cartridge | Console's cartridge shape | Fanart | ❌ | Dimmed |
+| Marquee | Logo | Original slot | Fanart | ❌ | ❌ |
+| Title Screen | Title screen | Console's screen ratio | Fanart | ✅ | ❌ |
+| Title Screen + Marquee | Title screen | Console's screen ratio | Fanart | ✅ | Dimmed |
+| Title Screen (XMB) | Title screen | Console's screen ratio | XMB | ✅ | ❌ |
+| Title Screen + Marquee (XMB) | Title screen | Console's screen ratio | XMB | ✅ | Full brightness |
+| Fanart (XMB) | Fanart | Console's screen ratio | XMB | ✅ | ❌ |
+| Fanart + Marquee (XMB) | Fanart | Console's screen ratio | XMB | ✅ | Full brightness |
+
+In all variants, games without the image get an empty glass box. "Game fanart" as the background is the color schemes' default; a custom color scheme can turn it off (`showBackgroundGameArtGamelistView`).
 
 ### **Built-in Color Schemes**
 
@@ -79,7 +93,7 @@ Marquee slots keep their original shape, because logos have no fixed shape.
 | Ratio | Consoles |
 |---|---|
 | `16-9` | PSP, PS Vita, Switch, Wii U, PS3, PS4, Xbox 360, Xbox One, Virtual Boy, PC/Steam/Windows, Android |
-| `5-3` | Nintendo 3DS (top screen, like the scraped videos), Playdate |
+| `5-3` | Nintendo 3DS, Playdate |
 | `3-2` | Game Boy Advance, Lynx, WonderSwan (Color), Pokémon Mini |
 | `10-9` | Game Boy, Game Boy Color, Game Gear, Mega Duck |
 | `1-1` | Neo Geo Pocket (Color), Supervision, Gamate |
@@ -89,7 +103,7 @@ Marquee slots keep their original shape, because logos have no fixed shape.
 
 To change a console, edit `<systemScreenRatio>` in its file in `_inc/systems/_metadata-global/` (for example `gc.xml`). A system without its own value uses `_default.xml`. To keep the change, also add the console to the `CONSOLES` table in [`resources/generate-true-ratio.py`](resources/generate-true-ratio.py): running the script (`python3 resources/generate-true-ratio.py`) regenerates all size files and resets the metadata values to that table. The slot and video sizes for every screen and console ratio are in `_inc/screen-ratio/<screen ratio>/<console ratio>.xml`. Cover and cartridge slots work the same way with `_inc/box-ratio/<screen ratio>/<systemCoverSize or systemCartSize>.xml`. Slots never get bigger than the original boxart slot, so tall ratios get narrower instead of taller.
 
-The glass box colour is `textBackgroundColor` / `textSelectedBackgroundColor` in the `gamelist-carousel` of `theme.xml` (default `FFFFFF22`; the last two digits are the opacity).
+The glass box colour is `surfaceColor` in the color scheme (`colors.xml`, default `FFFFFF22`; the last two digits are the opacity). To change it, set `surfaceColor` in a [custom color scheme](#creating-your-own-color-scheme).
 
 ## **Customizations**
 
@@ -118,9 +132,10 @@ A custom color scheme lets you to modify any of the colors and backgrounds used 
       - `backgroundGradientType` - if you set a gradient then this sets the direction the gradient will display as.  Options are: `horizontal`, `vertical`
       - `backgroundGameArtType` - If you have `showBackgroundGameArtSystemView` or `showBackgroundGameArtGamelistView` set to true then this property sets the type of gameart to display. Options are: `fanart`, `screenshot`
       - `backgroundGameArtSelector` - If you have `showBackgroundGameArtSystemView` then this property sets the query to use for pulling in game art.  Options are: `lastplayed`, `random`
-      - `showBackgroundGameArtSystemView` - Sets if you would like to display video backgrounds.  If you set this then make sure to set a value for `backgroundVideoPath`
+      - `showBackgroundVideo` - Sets if you would like to display video backgrounds.  If you set this then make sure to set a value for `backgroundVideoPath`
       - `showBackgroundGameArtSystemView` - Sets if you would like to display game art backgrounds as you scroll through systems on the system view.
       - `showBackgroundGameArtGamelistView` - Sets if you would like to display game art backgrounds as you scroll through games on the gamelist view
+      - `surfaceColor` - Sets the color of the box shown for games without an image (default `FFFFFF22`, a faint glass; the last two digits are the opacity)
     
 4) Set the `Theme Color Scheme` in ES-DE's UI Settings menu to `Custom` and you should see your custom color scheme display.  If you see an error check that the paths discussed above are correct and then check that the values you added for each property are correct and well formatted.
 

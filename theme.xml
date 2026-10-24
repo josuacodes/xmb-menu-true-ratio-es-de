@@ -209,8 +209,8 @@ https://github.com/anthonycaccese/basic-xmb-es-de
          <!-- Games without the image: faint glass box, no name (it is shown next to the slot) -->
          <textColor>00000000</textColor>
          <textSelectedColor>00000000</textSelectedColor>
-         <textBackgroundColor>FFFFFF22</textBackgroundColor>
-         <textSelectedBackgroundColor>FFFFFF22</textSelectedBackgroundColor>
+         <textBackgroundColor>${surfaceColor}</textBackgroundColor>
+         <textSelectedBackgroundColor>${surfaceColor}</textSelectedBackgroundColor>
          <fontPath>${fontBold}</fontPath>
          <color>00000000</color>
          <fastScrolling>true</fastScrolling>
